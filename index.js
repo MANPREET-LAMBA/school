@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2");
-const fs = require("fs");
+
  const enc = require('dotenv').config();
  if (enc.error) {
     throw enc.error;
