@@ -7,18 +7,16 @@ const fs = require("fs");
     throw enc.error;
 }
 
-// console.log(process.env);
 
 
 const haversine = require("haversine-distance"); // For geographical distance calculation
-// const { log } = require("console");
 
 const app = express();
 const port = process.env.DB_PORT|| 3000;
 
 // Middleware
 app.use(bodyParser.json());
-console.log(process.env.DB_PORT);
+
 
 // MySQL Database Connection
 const db = mysql.createPool({
