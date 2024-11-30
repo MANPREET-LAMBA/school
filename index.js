@@ -2,22 +2,31 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2");
 const fs = require("fs");
+ const enc = require('dotenv').config();
+ if (enc.error) {
+    throw enc.error;
+}
+
+// console.log(process.env);
+
 
 const haversine = require("haversine-distance"); // For geographical distance calculation
+// const { log } = require("console");
 
 const app = express();
-const port = 3000;
+const port = process.env.DB_PORT|| 3000;
 
 // Middleware
 app.use(bodyParser.json());
+console.log(process.env.DB_PORT);
 
 // MySQL Database Connection
 const db = mysql.createPool({
-    host: "mysql-2d0d0b97-manpreetsingh20031-67fe.e.aivencloud.com", // Replace with your Aiven host
-    port: 28585, // Default Aiven MySQL port
-    user: "avnadmin",   // Replace with your Aiven username
-    password: "AVNS_KWGTTjfkqwFLHL-DjGS", // Replace with your Aiven password
-    database: "defaultdb", // Replace with your database name
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     
 });
 
