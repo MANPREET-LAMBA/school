@@ -16,8 +16,6 @@ const port = process.env.DB_PORT|| 3000;
 
 // Middleware
 app.use(bodyParser.json());
-
-
 // MySQL Database Connection
 const db = mysql.createPool({
     host: process.env.DB_HOST,
